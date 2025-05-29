@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_personal_note_user,access_personal_note_user,model_personal_note,base.group_user,1,1,1,0
+access_personal_note_admin,access_personal_note_admin,model_personal_note,personal_notes.group_note_admin,1,1,1,1

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="personal_note" model="ir.module.category">
+            <field name="name">Gestión de Notas</field>
+            <field name="sequence">10</field>
+        </record>
+        <record id="group_note_admin" model="res.groups">
+            <field name="name">Administrador de notas</field>
+            <field name="category_id" ref="personal_notes.personal_note"/>
+        </record>
+    </data>
+</odoo>

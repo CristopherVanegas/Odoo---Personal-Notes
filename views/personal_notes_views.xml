@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- menu de busqueda -->
+    <record id="personal_note_view_search" model="ir.ui.view">
+        <field name="name">personal.note.view.search</field>
+        <field name="model">personal.note</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Notas">
+                <field name="name" />
+                <filter string="Importantes" name="filter_important"
+                    domain="[('important', '=', True)]" />
+                <group>
+                    <filter string="Usuario" name="group_user" context="{'group_by': 'user_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+    <!-- vista en lista o tree -->
+    <record id="personal_note_view_tree" model="ir.ui.view">
+        <field name="name">personal.note.view.tree</field>
+        <field name="model">personal.note</field>
+        <field name="arch" type="xml">
+            <list string="Personal Note Tree">
+                <field name="user_id" />
+                <field name="name" />
+                <field name="description" />
+            </list>
+        </field>
+    </record>
+
+    <!-- vista kanban -->
+    <record id="personal_note_view_kanban" model="ir.ui.view">
+        <field name="name">personal.note.view.kanban</field>
+        <field name="model">personal.note</field>
+        <field name="arch" type="xml">
+            <kanban string="Personal Note Kanban">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                            <div class="o_kanban_details">
+                                <strong>
+                                    <field name="name" />
+                                </strong>
+                                <p>
+                                    <field name="description" />
+                                </p>
+                                <small>
+                                    <field name="date" />
+                                </small>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- vista de formulario para agregar y editar notas personales -->
+    <record id="personal_note_view_form" model="ir.ui.view">
+        <field name="name">personal.note.view_form</field>
+        <field name="model">personal.note</field>
+        <field name="arch" type="xml">
+            <form string="Personal Note Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="description" />
+                        </group>
+                        <group>
+                            <field name="user_id" readonly="1" />
+                            <field name="partner_id" />
+                            <field name="date" />
+                            <button name="action_toggle_important"
+                                string="Cambiar estado de Importancia"
+                                type="object"
+                                class="btn btn-primary" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acciones para las notas personales -->
+    <record id="action_personal_note" model="ir.actions.act_window">
+        <field name="name">Notas Personales</field>
+        <field name="res_model">personal.note</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="view_id" ref="personal_note_view_tree" />
+    </record>
+
+    <!-- botones en el menu -->
+    <menuitem id="menu_personal_note_root" name="Personal Notes" />
+
+    <!-- <menuitem id="menu_personal_note" name="Notas" parent="menu_personal_note_root"
+        action="action_personal_note" /> -->
+    <!-- 
+    <menuitem id="menu_personal_note"
+        name="Notas"
+        parent="menu_personal_note_root"
+        action="action_personal_note" /> -->
+</odoo>
