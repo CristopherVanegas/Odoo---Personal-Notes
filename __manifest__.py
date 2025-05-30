@@ -13,6 +13,11 @@
         'views/res_partner_views.xml',
         'data/personal_cron.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'personal_notes/static/src/css/kanban_colors.css',
+        ],
+    },
     'installable': True,
     'application': True,
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_personal_note_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="note">
+                <div class="page">
+                    <h2>
+                        <t t-esc="note.title" />
+                    </h2>
+                    <p>
+                        <t t-esc="note.content" />
+                    </p>
+                    <hr />
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="action_report_personal_note"
+        model="personal.note"
+        string="Reporte de Notas"
+        report_type="qweb-pdf"
+        name="personal_notes.report_personal_note_document"
+        file="personal_notes.report_personal_note_document"
+        print_report_name="'Notas_de_' + object.create_uid.name"
+    />
+</odoo>

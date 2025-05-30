@@ -34,13 +34,17 @@
         <field name="model">personal.note</field>
         <field name="arch" type="xml">
             <kanban string="Personal Note Kanban">
+                <field name="important" />
+                <field name="important_text" />
                 <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                    <t t-name="card">
+                        <div
+                            t-att-class="'oe_kanban_card oe_kanban_global_click ' + (record.important.raw_value ? 'kanban_important' : 'kanban_normal')">
                             <div class="o_kanban_details">
                                 <strong>
                                     <field name="name" />
                                 </strong>
+                                <div>Importancia: <t t-esc="record.important_text.raw_value" /></div>
                                 <p>
                                     <field name="description" />
                                 </p>
@@ -86,7 +90,7 @@
     <record id="action_personal_note" model="ir.actions.act_window">
         <field name="name">Notas Personales</field>
         <field name="res_model">personal.note</field>
-        <field name="view_mode">list,kanban,form</field>
+        <field name="view_mode">kanban,list,form</field>
         <field name="view_id" ref="personal_note_view_tree" />
     </record>
 

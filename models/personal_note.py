@@ -1,6 +1,6 @@
 # -- encoding: utf-8 --
 
-import datetime
+from datetime import datetime, timedelta
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 import logging
@@ -17,7 +17,7 @@ class PersonalNote(models.Model):
     @api.model
     def archive_old_notes(self):
         """Marca como no importantes las notas de hace más de 30 días"""
-        limit_date = datetime.today() - datetime.timedelta(days=30)
+        limit_date = datetime.today() - timedelta(days=30)
         old_notes = self.search([('date', '<=', limit_date.date()), ('important', '=', True)])
         old_notes.write({'important': False})
         _logger = self.env['ir.logging']
@@ -78,16 +78,6 @@ class PersonalNote(models.Model):
     # ------------------------------------------------------
     # OTHER BUSINESS METHODS
     # ------------------------------------------------------
-    @api.model
-    def create(self, vals):
-        if vals.get('important'):
-            vals['color'] = 1
-        return super().create(vals)
-
-    def write(self, vals):
-        if 'important' in vals:
-            vals['color'] = 1 if vals['important'] else 0
-        return super().write(vals)
     # ------------------------------------------------------
     # COLUMNS
     # ------------------------------------------------------
@@ -125,4 +115,4 @@ class PersonalNote(models.Model):
         'res.partner', 
         string='Contacto'
     )
-    color = fields.Integer('Color Index')
+    color = fields.Integer("Color")
