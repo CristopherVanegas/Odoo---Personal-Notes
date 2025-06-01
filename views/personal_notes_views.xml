@@ -65,6 +65,15 @@
         <field name="model">personal.note</field>
         <field name="arch" type="xml">
             <form string="Personal Note Form">
+                <!-- BARRA DE BOTONES SUPERIOR -->
+                <header>
+                    <header>
+                        <button name="print_report"
+                            string="Exportar a PDF"
+                            type="object"
+                            class="btn-primary" />
+                    </header>
+                </header>
                 <sheet>
                     <group>
                         <group>
@@ -93,6 +102,7 @@
         <field name="view_mode">kanban,list,form</field>
         <field name="view_id" ref="personal_note_view_tree" />
     </record>
+
 
     <!-- botones en el menu -->
     <menuitem id="menu_personal_note_root" name="Personal Notes" />

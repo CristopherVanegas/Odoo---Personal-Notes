@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_personal_note_document">
+            <t t-call="web.basic_layout">
+                <div class="page">
+                    <h2>Reporte de Nota Personal</h2>
+                    <table class="table table-sm mt16">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Título:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Descripción:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.description" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Fecha:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.date" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Importancia:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.important_text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Usuario:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.user_id.name" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Contacto:</strong>
+                                </td>
+                                <td>
+                                    <span t-field="doc.partner_id.name" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
