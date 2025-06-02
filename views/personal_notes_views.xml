@@ -46,7 +46,14 @@
                                 </strong>
                                 <div>Importancia: <t t-esc="record.important_text.raw_value" /></div>
                                 <p>
-                                    <field name="description" />
+                                    <field name="description_short" />
+
+                                    <!-- en la plantilla del kanban -->
+                                    <t t-if="record.description_short.value">
+                                        <span>
+                                            <t t-esc="record.description_short.value" />
+                                        </span>
+                                    </t>
                                 </p>
                                 <small>
                                     <field name="date" />

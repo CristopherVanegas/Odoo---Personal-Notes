@@ -7,8 +7,11 @@
     'summary': 'Simple personal notes',
     'depends': ['base'],
     'data': [
+        'security/ir.model.access.csv',
         'security/res_groups.xml',
-        "security/ir.model.access.csv",
+        'reports/reports.xml',
+        'reports/personal_note_report_action.xml',
+        'reports/personal_note_report_template.xml',
         'views/personal_notes_views.xml',
         'views/res_partner_views.xml',
         'data/personal_cron.xml',

@@ -38,6 +38,10 @@ class PersonalNote(models.Model):
     def _compute_important_text(self):
         for record in self:
             record.important_text = 'Importante' if record.important else 'No importante'
+            
+    def _compute_description_short(self):
+        for rec in self:
+            rec.description_short = (rec.description[:25] + '...') if rec.description and len(rec.description) >25 else rec.description
     # ------------------------------------------------------
     # SELECTION METHODS
     # ------------------------------------------------------
@@ -75,6 +79,12 @@ class PersonalNote(models.Model):
                 'type': 'success',
             }
         }
+        
+    
+    def print_report(self):
+        return self.env.ref('personal_notes.action_report_personal_note').report_action(self)
+        # return self.env.ref('personal_notes.action_report_personal_note').report_action(self, data=data)
+
     # ------------------------------------------------------
     # OTHER BUSINESS METHODS
     # ------------------------------------------------------
@@ -89,6 +99,9 @@ class PersonalNote(models.Model):
     description = fields.Text(
         string='Descripción',
         help='Descripción de la nota',
+    )
+    description_short = fields.Char(
+        compute='_compute_description_short'
     )
     date = fields.Date(
         string='Fecha',
