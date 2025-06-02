@@ -9,7 +9,7 @@
     'data': [
         'security/ir.model.access.csv',
         'security/res_groups.xml',
-        'reports/reports.xml',
+        # 'reports/reports.xml',
         'reports/personal_note_report_action.xml',
         'reports/personal_note_report_template.xml',
         'views/personal_notes_views.xml',

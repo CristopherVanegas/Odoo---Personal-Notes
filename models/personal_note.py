@@ -83,8 +83,7 @@ class PersonalNote(models.Model):
     
     def print_report(self):
         return self.env.ref('personal_notes.action_report_personal_note').report_action(self)
-        # return self.env.ref('personal_notes.action_report_personal_note').report_action(self, data=data)
-
+    
     # ------------------------------------------------------
     # OTHER BUSINESS METHODS
     # ------------------------------------------------------

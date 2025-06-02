@@ -24,6 +24,7 @@
                 <field name="user_id" />
                 <field name="name" />
                 <field name="description" />
+                <field name="important_text" />
             </list>
         </field>
     </record>
@@ -109,7 +110,16 @@
         <field name="view_mode">kanban,list,form</field>
         <field name="view_id" ref="personal_note_view_tree" />
     </record>
-
+    <!-- Acción para imprimir las notas -->
+    <record id="action_print_personal_notes" model="ir.actions.report">
+        <field name="name">Imprimir Notas</field>
+        <field name="model">personal.note</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">personal_notes.report_personal_note_document</field>
+        <field name="report_file">personal_notes.report_personal_note_document</field>
+        <field name="binding_model_id" ref="model_personal_note" />
+        <field name="binding_type">action</field>
+    </record>
 
     <!-- botones en el menu -->
     <menuitem id="menu_personal_note_root" name="Personal Notes" />
