@@ -41,7 +41,7 @@ class PersonalNote(models.Model):
             
     def _compute_description_short(self):
         for rec in self:
-            rec.description_short = (rec.description[:25] + '...') if rec.description and len(rec.description) >25 else rec.description
+            rec.description_short = (rec.description[:21    ] + '...') if rec.description and len(rec.description) >21 else rec.description
     # ------------------------------------------------------
     # SELECTION METHODS
     # ------------------------------------------------------
